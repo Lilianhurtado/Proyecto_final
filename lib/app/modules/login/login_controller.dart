@@ -24,7 +24,7 @@ class LoginController extends GetxController {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setString("token", response.accessToken);
 
-        print("Login Exitoso.Token:: ${response.accessToken}");
+        print("Login Exitoso. Token: ${response.accessToken}");
         print("Usuario: ${response.user.name} (${response.user.email})");
 
         Get.offAllNamed(Routes.HOME);

@@ -54,16 +54,16 @@ class RegisterController extends GetxController {
         if (loginResponse != null) {
           await prefs.setString("token", loginResponse.accessToken);
 
-          print("Login automatico tras registro");
-          print("Token Guardado: ${loginResponse.accessToken}");
+          print("Login Automatico tras registro");
+          print("Token Guardado ${loginResponse.accessToken}");
 
           Get.offAllNamed(Routes.HOME);
-        } else {
+        }else{
           print("No se pudo hacer login automatico tras el registro");
           Get.offAllNamed(Routes.LOGIN);
         }
-      } else {
-        print("Error en el registro, respuesta nula");
+      }else{
+         print("Error en el registro, respuesta nula");
       }
     } catch (e) {
       print("Error en onRegisterPressed: $e");

@@ -7,7 +7,7 @@ import '../models/register_response.dart';
 import '../../../utils/constants.dart';
 
 class AuthProvider {
-  //metodo login
+  //Metodo Login
   static Future<LoginResponse?> login(String email, String password) async {
     try {
       final response = await http.post(
@@ -24,12 +24,12 @@ class AuthProvider {
         return null;
       }
     } catch (e) {
-      print("Exception en Login: $e");
+      print("Exception en login: $e");
       return null;
     }
-  }
+  } 
 
-  //metodo registro
+  //Metodo Registro
   static Future<RegisterResponse?> register({
     required String name,
     required String email,
@@ -43,9 +43,9 @@ class AuthProvider {
         body: jsonEncode({
           "name": name, 
           "email": email,
-          "password": password, 
+          "password": password,
           "password_confirmation": passwordConfirmation,
-          }),
+        }),
       );
 
       if (response.statusCode == 201) {
@@ -56,7 +56,7 @@ class AuthProvider {
         return null;
       }
     } catch (e) {
-      print("Exception en Login: $e");
+      print("Exception en login: $e");
       return null;
     }
   }

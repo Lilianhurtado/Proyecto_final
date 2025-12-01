@@ -22,16 +22,35 @@ class PostDetail {
   });
 
   factory PostDetail.fromJson(Map<String, dynamic> json) {
+    final img = json["featured_image"];
+
+    String fullImage = "";
+    if (img != null && img.toString().isNotEmpty) {
+      if (img.toString().startsWith("http")) {
+        fullImage = img;
+      } else {
+        fullImage = "http://localhost:8000/$img";
+      }
+    } else {
+      fullImage = "https://via.placeholder.com/600x400";
+    }
+
     return PostDetail(
-      id: json["id"],
-      title: json["title"],
-      slug: json["slug"],
-      content: json["content"],
-      featuredImage: json["featured_image"],
-      publishedAt: json["published_at"],
-      authorName: json["author"]["name"],
-      categories: (json["categories"] as List).map((c)=>c["name"].toString()).toList(),
-      tags: (json["tags"] as List).map((t)=>t["name"].toString()).toList(),
+      id: json["id"] ?? 0,
+      title: json["title"] ?? "",
+      slug: json["slug"] ?? "",
+      content: json["content"] ?? "",
+      featuredImage: fullImage,
+      publishedAt: json["published_at"] ?? "",
+      authorName: json["author"]?["name"] ?? "Sin autor",
+
+      categories: (json["categories"] as List? ?? [])
+          .map((c) => c["name"].toString())
+          .toList(),
+
+      tags: (json["tags"] as List? ?? [])
+          .map((t) => t["name"].toString())
+          .toList(),
     );
   }
 }

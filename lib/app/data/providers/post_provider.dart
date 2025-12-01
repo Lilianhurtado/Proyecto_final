@@ -8,6 +8,7 @@ import '../models/post_detail_model.dart';
 import '../../../utils/constants.dart';
 
 class PostProvider {
+
   static Future<List<Post>> getPosts(
     int page, {
     int perPage = 10,
@@ -18,7 +19,7 @@ class PostProvider {
       final token = presfs.getString("token");
 
       final url =
-          "${AppConstants.baseUrl}/auth/posts?page=$page&per_page=$perPage${query.isNotEmpty ? "&q=$query" : ""}";
+          "${AppConstants.baseUrl}/posts?page=$page&per_page=$perPage${query.isNotEmpty ? "&q=$query" : ""}";
 
       print("URL request: $url");
 
@@ -39,12 +40,12 @@ class PostProvider {
         return [];
       }
     } catch (e) {
-      print("Exception en getPost: $e");
+      print("Exception en getPosts: $e");
       return [];
     }
   }
 
-  //metodo registro
+  //Metodo Registro
   static Future<PostDetail?> getPostDetail(String slug) async {
     try {
       final presfs = await SharedPreferences.getInstance();
@@ -55,15 +56,14 @@ class PostProvider {
         headers: {
           "Content-Type": "application/json",
           "Authorization": "Bearer $token",
-          },
+        },
       );
-      
 
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
         return PostDetail.fromJson(jsonData);
       } else {
-        print("Error al obtener detalle: ${response.statusCode} ");
+        print("Error al obtener detalle: ${response.statusCode}");
         return null;
       }
     } catch (e) {
@@ -71,4 +71,5 @@ class PostProvider {
       return null;
     }
   }
+
 }

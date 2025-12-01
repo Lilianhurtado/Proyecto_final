@@ -28,13 +28,13 @@ class User {
       id: json["id"],
       name: json["name"],
       email: json["email"],
-      descripcion: json["descripcion"],
-      urlFacebook: json["urlFacebook"],
-      urlInstagram: json["urlInstagram"],
-      urlYoutube: json["urlYoutube"],
-      role: json["role"],
-      createdAt: json["created_at"],
-      updatedAt: json["updated_at"],
+      descripcion : json["descripcion"],
+      urlFacebook : json["urlfacebook"],
+      urlInstagram : json["urlinstagram"],
+      urlYoutube : json["urlyoutube"],
+      role : json["role"],
+      createdAt : json["created_at"],
+      updatedAt : json["updated_at"],
     );
   }
 }
