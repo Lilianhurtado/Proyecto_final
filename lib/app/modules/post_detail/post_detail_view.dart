@@ -55,7 +55,7 @@ class PostDetailView extends GetView<PostDetailController> {
                   return const Icon(
                     Icons.broken_image,
                     size: 80,
-                    color: Colors.blueAccent,
+                    color: Colors.black,
                   );
                 },
               ),
